@@ -14,6 +14,7 @@ $routes->post('/registerAccount', 'RegistrationController::registerAccount');
 //login
 $routes->get('/login', 'LoginController::loginView');
 $routes->post('/loginAccount', 'LoginController::login');
-
+//logout
+$routes->post('/logout', 'LoginController::logout');
 //landing
 $routes->get('/landing', 'PageController::landing');

@@ -50,4 +50,10 @@ class LoginController extends BaseController
             return redirect()->back()->with('error', 'Account not found');
         }
     }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect('/');
+    }
 }

@@ -12,6 +12,13 @@
     <?php if (session()->getFlashdata('loginSuccess')): ?>
         <span style="color:green"><?php echo session()->getFlashdata('loginSuccess') ?></span>
     <?php endif ?>
+
+
+    <h1>Welcome to the App! <?php echo session()->get('firstname') ?></h1>
+
+    <form action="/logout" method="POST">
+        <button type="submit">LOGOUT</button>
+    </form>
 </body>
 
 </html>
