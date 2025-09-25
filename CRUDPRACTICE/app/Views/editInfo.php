@@ -67,7 +67,9 @@
 
 <body>
     <form action="/editInfo" method="POST">
-        <?= csrf_field() ?> <!-- include if CSRF enabled -->
+        <?php if (session()->getFlashdata('existing')): ?>
+            <span style="color: red;"><?php echo session()->getFlashdata('existing') ?></span>
+        <?php endif ?>
         <h1>Edit Your Info</h1>
 
         <div class="firstname">
