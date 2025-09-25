@@ -13,11 +13,19 @@
         <span style="color:green"><?php echo session()->getFlashdata('loginSuccess') ?></span>
     <?php endif ?>
 
+    <?php if (session()->getFlashdata('updated')): ?>
+        <span style="color:green"><?php echo session()->getFlashdata('updated') ?></span>
+    <?php endif ?>
+
 
     <h1>Welcome to the App! <?php echo session()->get('firstname') ?></h1>
 
     <form action="/logout" method="POST">
         <button type="submit">LOGOUT</button>
+    </form>
+
+    <form action="/profile/edit" method="get">
+        <button type="submit">EDIT</button>
     </form>
 </body>
 

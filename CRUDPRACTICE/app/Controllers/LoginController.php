@@ -37,6 +37,7 @@ class LoginController extends BaseController
                 //if correct, store session data
                 $session = session();
                 $session->set([
+                    'id' => $user['id'],
                     'firstname' => $user['firstname'],
                     'middlename' => $user['middlename'],
                     'lastname' => $user['lastname'],

@@ -18,3 +18,9 @@ $routes->post('/loginAccount', 'LoginController::login');
 $routes->post('/logout', 'LoginController::logout');
 //landing
 $routes->get('/landing', 'PageController::landing');
+
+//edit page
+$routes->get('/profile/edit', 'FunctionController::edit');
+
+//edit own info in own account
+$routes->post('/editInfo', 'FunctionController::editInfo');
