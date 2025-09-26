@@ -45,9 +45,16 @@
     <?php if (session()->getFlashdata('incomplete')): ?>
         <span style="color: red;"><?php echo session()->getFlashdata('incomplete') ?></span>
     <?php endif ?>
+
+    <?php if (session()->getFlashdata('adminSuccess')): ?>
+        <span style="color: green;"><?php echo session()->getFlashdata('adminSuccess') ?></span>
+    <?php endif ?>
+
     <div class="menu">
         <a href="/login">Login</a>
         <a href="/register">Register</a>
+        <a href="/adminCreateAccount">AdminCreateAccount</a>
+        <a href="/adminLogin">AdminLoginAccount</a>
     </div>
 </body>
 

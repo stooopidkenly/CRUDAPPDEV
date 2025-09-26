@@ -24,3 +24,15 @@ $routes->get('/profile/edit', 'FunctionController::edit');
 
 //edit own info in own account
 $routes->post('/editInfo', 'FunctionController::editInfo');
+
+//admin page
+$routes->get('/adminLogin', 'AdminController::adminLoginView');
+$routes->get('/adminCreateAccount', 'AdminController::createAdminAccount');
+
+$routes->post('/registerAdmin', 'AdminController::registerAdmin');
+$routes->post('/adminLogin', 'AdminController::adminLogin');
+
+$routes->get('/admin/showUsers', 'AdminController::getAllUsers');
+
+//admin landing
+$routes->get('/adminLanding', 'AdminController::adminLanding');
