@@ -32,5 +32,7 @@ $routes->get('/adminCreateAccount', 'AdminController::createAdminAccount');
 $routes->post('/registerAdmin', 'AdminController::registerAdmin');
 $routes->post('/adminLogin', 'AdminController::adminLogin');
 
+$routes->get('/admin/showUsers', 'AdminController::getAllUsers');
+
 //admin landing
 $routes->get('/adminLanding', 'AdminController::adminLanding');

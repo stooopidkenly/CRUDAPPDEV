@@ -12,6 +12,10 @@
     <?php if (session()->getFlashdata('loginSuccessAdmin')): ?>
         <span style="color:green;"><?php echo session()->getFlashdata('loginSuccessAdmin') ?></span>
     <?php endif ?>
+
+    <form action="/admin/showUsers" method="get">
+        <button type="submit">Show All Users</button>
+    </form>
 </body>
 
 </html>

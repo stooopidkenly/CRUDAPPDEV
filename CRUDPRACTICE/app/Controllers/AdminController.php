@@ -5,15 +5,20 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\AdminModel;
+use App\Models\UserModel;
 
 class AdminController extends BaseController
 {
     protected $adminModel;
+    protected $userModel;
 
     public function __construct()
     {
         $this->adminModel = new AdminModel();
+        $this->userModel = new UserModel();
     }
+
+
     public function index()
     {
         //
@@ -82,6 +87,20 @@ class AdminController extends BaseController
             }
         } else {
             return redirect()->back()->with('error', 'Account not found');
+        }
+    }
+
+    public function getAllUsers()
+    {
+        $users = $this->userModel->findAll();
+        try {
+            if ($users) {
+                return view('showUsers', ['users' => $users]);
+            } else {
+                return redirect()->back()->with('errorGettingUsers', 'Error Getting Users');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('somethingWentWrong', 'Something Went Wrong' . $e->getMessage());
         }
     }
 }
