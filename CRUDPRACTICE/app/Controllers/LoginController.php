@@ -41,9 +41,10 @@ class LoginController extends BaseController
                     'firstname' => $user['firstname'],
                     'middlename' => $user['middlename'],
                     'lastname' => $user['lastname'],
+                    'role' => 'user',
                     'isLoggedIn' => true
                 ]);
-                return redirect()->to('/landing')->with('loginSuccess', 'Login Successful!');
+                return redirect()->to('/user/landing')->with('loginSuccess', 'Login Successful!');
             } else {
                 return redirect()->back()->with('failed', 'Login Failed, Try Again');
             }

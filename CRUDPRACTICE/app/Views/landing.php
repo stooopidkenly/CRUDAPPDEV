@@ -24,7 +24,7 @@
         <button type="submit">LOGOUT</button>
     </form>
 
-    <form action="/profile/edit" method="get">
+    <form action="/user/profile/edit" method="get">
         <button type="submit">EDIT</button>
     </form>
 </body>

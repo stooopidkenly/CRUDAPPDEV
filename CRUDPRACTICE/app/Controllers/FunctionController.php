@@ -79,6 +79,6 @@ class FunctionController extends BaseController
             'lastname' => $data['lastname'],
             'email' => $data['email'],
         ]);
-        return redirect()->to('/landing')->with('updated', 'Account Credentials Updated');
+        return redirect()->to('/user/landing')->with('updated', 'Account Credentials Updated');
     }
 }

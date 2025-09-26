@@ -66,7 +66,7 @@
 </head>
 
 <body>
-    <form action="/editInfo" method="POST">
+    <form action="/user/profile/editInfo" method="POST">
         <?php if (session()->getFlashdata('existing')): ?>
             <span style="color: red;"><?php echo session()->getFlashdata('existing') ?></span>
         <?php endif ?>

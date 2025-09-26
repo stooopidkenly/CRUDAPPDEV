@@ -50,6 +50,12 @@
         <span style="color: green;"><?php echo session()->getFlashdata('adminSuccess') ?></span>
     <?php endif ?>
 
+    <?php if (session()->getFlashdata('error')): ?>
+        <span style="color: red;"><?php echo session()->getFlashdata('error') ?></span>
+    <?php endif ?>
+
+
+
     <div class="menu">
         <a href="/login">Login</a>
         <a href="/register">Register</a>

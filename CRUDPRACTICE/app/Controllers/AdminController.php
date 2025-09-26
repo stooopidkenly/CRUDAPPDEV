@@ -79,9 +79,10 @@ class AdminController extends BaseController
                 $session->set([
                     'id' => $admin['id'],
                     'username' => $admin['username'],
+                    'role' => 'admin',
                     'isLoggedIn' => true
                 ]);
-                return redirect()->to('/adminLanding')->with('loginSuccessAdmin', 'Admin Login Successful!');
+                return redirect()->to('/admin/landing')->with('loginSuccessAdmin', 'Admin Login Successful!');
             } else {
                 return redirect()->back()->with('failed', 'Login Failed, Try Again');
             }
