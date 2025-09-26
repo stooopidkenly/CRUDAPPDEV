@@ -35,7 +35,9 @@ class RoleFilter implements FilterInterface
         // Check kung role matches
         $requiredRole = $arguments[0] ?? null;
         if ($requiredRole && $session->get('role') !== $requiredRole) {
-            return service('response')->setStatusCode(403)->setBody('Forbidden: No access.');
+            return service('response')
+                ->setStatusCode(403)
+                ->setBody(view('Response/403'));
         }
     }
 
