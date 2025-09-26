@@ -16,6 +16,12 @@
     <form action="/admin/showUsers" method="get">
         <button type="submit">Show All Users</button>
     </form>
+
+    <form action="/logout" method="POST">
+        <button type="submit">LOGOUT</button>
+    </form>
+
+
 </body>
 
 </html>

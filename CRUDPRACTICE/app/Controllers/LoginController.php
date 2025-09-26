@@ -54,7 +54,8 @@ class LoginController extends BaseController
 
     public function logout()
     {
-        session()->destroy();
+        $session = session();
+        $session->destroy();
         return redirect('/');
     }
 }
