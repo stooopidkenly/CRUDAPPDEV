@@ -6,33 +6,38 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-//database connection checker
+
+// ✅ Database connection checker
 $routes->get('/conn', 'DatabaseChecker::index');
-//regisration
+
+// ================= USER AUTH ================= //
+// Registration
 $routes->get('/register', 'RegistrationController::registerView');
 $routes->post('/registerAccount', 'RegistrationController::registerAccount');
-//login
+
+// Login
 $routes->get('/login', 'LoginController::loginView');
 $routes->post('/loginAccount', 'LoginController::login');
-//logout
+
+// Logout
 $routes->post('/logout', 'LoginController::logout');
-//landing
-$routes->get('/landing', 'PageController::landing');
 
-//edit page
-$routes->get('/profile/edit', 'FunctionController::edit');
+// ================= USER PAGES ================= //
+$routes->group('user', ['filter' => 'role:user'], function ($routes) {
+    $routes->get('landing', 'PageController::landing');
+    $routes->get('profile/edit', 'FunctionController::edit');
+    $routes->post('profile/editInfo', 'FunctionController::editInfo');
+});
 
-//edit own info in own account
-$routes->post('/editInfo', 'FunctionController::editInfo');
-
-//admin page
+// ================= ADMIN AUTH ================= //
 $routes->get('/adminLogin', 'AdminController::adminLoginView');
 $routes->get('/adminCreateAccount', 'AdminController::createAdminAccount');
 
 $routes->post('/registerAdmin', 'AdminController::registerAdmin');
 $routes->post('/adminLogin', 'AdminController::adminLogin');
 
-$routes->get('/admin/showUsers', 'AdminController::getAllUsers');
-
-//admin landing
-$routes->get('/adminLanding', 'AdminController::adminLanding');
+// ================= ADMIN PAGES ================= //
+$routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
+    $routes->get('landing', 'AdminController::adminLanding');
+    $routes->get('showUsers', 'AdminController::getAllUsers');
+});
