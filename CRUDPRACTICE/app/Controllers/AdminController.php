@@ -64,6 +64,11 @@ class AdminController extends BaseController
         return view('adminLanding');
     }
 
+    public function createFromAdmin()
+    {
+        return view('createUserFromAdmin');
+    }
+
     public function adminLogin()
     {
         // get form data
@@ -93,15 +98,43 @@ class AdminController extends BaseController
 
     public function getAllUsers()
     {
-        $users = $this->userModel->findAll();
         try {
-            if ($users) {
-                return view('showUsers', ['users' => $users]);
-            } else {
-                return redirect()->back()->with('errorGettingUsers', 'Error Getting Users');
-            }
+            $users = $this->userModel->findAll();
+            // Laging mag-return ng view kahit empty
+            return view('showUsers', ['users' => $users]);
         } catch (\Exception $e) {
-            return redirect()->back()->with('somethingWentWrong', 'Something Went Wrong' . $e->getMessage());
+            return redirect()->to('/admin/landing')
+                ->with('somethingWentWrong', 'Something Went Wrong: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteUser($id = null)
+    {
+        $userModel = new \App\Models\UserModel();
+
+        if ($id && $userModel->find($id)) {
+            $userModel->delete($id);
+            return redirect()->to('/admin/showUsers')->with('success', 'User deleted successfully.');
+        }
+
+        // Kung invalid id, balik lang sa showUsers (wag sa landing para di mag-loop)
+        return redirect()->to('admin.landing')->with('error', 'User ID not found.');
+    }
+
+
+    public function banUser($id = null)
+    {
+
+        if ($id) {
+            //ban user
+        }
+    }
+
+    public function unbanUser($id = null)
+    {
+
+        if ($id) {
+            //unban
         }
     }
 }

@@ -13,12 +13,22 @@
         <span style="color:green;"><?php echo session()->getFlashdata('loginSuccessAdmin') ?></span>
     <?php endif ?>
 
+    <?php if (session()->getFlashdata('added')): ?>
+        <span style="color:green;"><?php echo session()->getFlashdata('added') ?></span>
+    <?php endif ?>
+
+
+
     <form action="/admin/showUsers" method="get">
         <button type="submit">Show All Users</button>
     </form>
 
     <form action="/logout" method="POST">
         <button type="submit">LOGOUT</button>
+    </form>
+
+    <form action="/admin/createFromAdmin">
+        <button type="submit">CREATE USER</button>
     </form>
 
 

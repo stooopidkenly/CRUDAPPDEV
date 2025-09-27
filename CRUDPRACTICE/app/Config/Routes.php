@@ -40,4 +40,7 @@ $routes->post('/adminLogin', 'AdminController::adminLogin');
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('landing', 'AdminController::adminLanding');
     $routes->get('showUsers', 'AdminController::getAllUsers');
+    $routes->get('createFromAdmin', 'AdminController::createFromAdmin');
+    $routes->post('registerAccountFromAdmin', 'RegistrationController::registerAccountFromAdmin');
+    $routes->post('user/delete/(:num)', 'AdminController::deleteUser/$1');
 });
