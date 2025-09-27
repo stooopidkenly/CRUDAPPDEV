@@ -60,4 +60,37 @@ class RegistrationController extends BaseController
             return redirect()->back()->with('error', 'Something went wrong' . $e->getMessage());
         }
     }
+
+    public function registerAccountFromAdmin()
+    {
+
+        //get the password
+        $password = $this->request->getPost('password');
+        //hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        //find email if existing
+        $email = $this->request->getPost('email');
+        $findEmail = $this->userModel->where('email', $email)->first();
+        if ($findEmail) {
+            return redirect()->back()->with('existing', 'Email Already Exists!!');
+        } else {
+            //get the other form data
+            //use associative array to store the data
+            $data = [
+                'firstname' => $this->request->getPost('firstname'),
+                'middlename' => $this->request->getPost('middlename'),
+                'lastname' => $this->request->getPost('lastname'),
+                'email' => $email,
+                'password' => $hashed_password
+            ];
+        }
+        //insert the data
+        try {
+            $this->userModel->insert($data);
+            return redirect()->to('/admin/landing')->with('added', 'Account Added Successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Something went wrong' . $e->getMessage());
+        }
+    }
 }
